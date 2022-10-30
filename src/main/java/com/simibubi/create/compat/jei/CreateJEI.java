@@ -186,6 +186,7 @@ public class CreateJEI implements IModPlugin {
 				.build("automatic_shapeless", MixingCategory::autoShapeless),
 
 		brewing = builder(BasinRecipe.class)
+				.enableWhen(c -> c.allowBrewingInMixer)
 				.addRecipes(() -> PotionMixingRecipes.ALL)
 				.catalyst(AllBlocks.MECHANICAL_MIXER::get)
 				.catalyst(AllBlocks.BASIN::get)
@@ -307,7 +308,7 @@ public class CreateJEI implements IModPlugin {
 
 		mysteryConversion = builder(ConversionRecipe.class)
 				.addRecipes(() -> MysteriousItemConversionCategory.RECIPES)
-				.itemIcon(AllItems.CHROMATIC_COMPOUND.get())
+				.itemIcon(AllBlocks.PECULIAR_BELL.get())
 				.emptyBackground(177, 50)
 				.build("mystery_conversion", MysteriousItemConversionCategory::new);
 
